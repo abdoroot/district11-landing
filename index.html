@@ -46,8 +46,9 @@
               المدارس والجامعات.
             </p>
             <div class="mx-8">
-              <a href="#" class="wave-btn block text-center bg-[#9f6f30] text-white font-bold text-lg md:text-xl py-4  
-                                border-2 border-white shadow-sm overflow-hidden relative">
+              <a href="#"
+                class="wave-btn block text-center bg-[#9f6f30] text-white font-bold text-lg md:text-xl py-4  border-2 border-white shadow-sm overflow-hidden relative"
+                data-modal-trigger>
                 احجز الآن ابتداءً من 1,700,000
               </a>
             </div>
@@ -354,7 +355,7 @@
           <div class="bg-white shadow-2xl w-[85%] sm:w-[320px] overflow-hidden">
             <div class="relative">
               <img src="/hero2.webp" alt="ديستريكت 11" class="w-full h-40 object-cover">
-              <button onclick="this.closest('.map-card').style.display='none'"
+              <button onclick="this.closest('.map-card').style.display='none'" data-modal-skip
                 class="absolute top-3 right-3 w-10 h-10  bg-[#9f6f30] text-white flex items-center justify-center text-xl">
                 ✕
               </button>
@@ -377,6 +378,50 @@
 
     </section>
   </main>
+
+  <div id="contactModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" data-modal-close data-modal-skip aria-label="إغلاق النافذة">
+        ✕
+      </button>
+      <div class="space-y-4 text-center">
+        <p class="text-sm uppercase  text-[#9f6f30]">
+          اتصل نعود إليك
+        </p>
+        <h3 class="text-3xl font-semibold text-gray-800">
+          سأقوم بالاتصال وتزويدك بالأسعار والتوافر
+        </h3>
+        <p class="text-gray-500 text-sm">
+          اترك اسمك ورقم هاتفك وسنرد خلال 24 ساعة.
+        </p>
+      </div>
+      <form class="modal-form" novalidate>
+        <div>
+          <label class="text-xs text-gray-400 uppercase " for="contact-name">
+            الاسم
+          </label>
+          <input id="contact-name" name="name" type="text" placeholder="اسمك الكامل" required>
+        </div>
+        <div>
+          <label class="text-xs text-gray-400 uppercase " for="contact-phone">
+            رقم الهاتف
+          </label>
+          <div class="modal-phone-input">
+            <span class="modal-phone-prefix">
+              🇦🇪 +971
+            </span>
+            <input id="contact-phone" name="phone" type="tel" placeholder="رقم الهاتف" required>
+          </div>
+        </div>
+        <button type="submit" class="modal-submit">
+          احصل على الأسعار والتوفر
+        </button>
+        <p class="text-[11px] text-gray-400 text-center uppercase mt-2">
+          نحترم خصوصيتك ولن نشارك بياناتك
+        </p>
+      </form>
+    </div>
+  </div>
   <script>
     const slider = document.getElementById('gallerySlider');
     const slides = slider.children;
@@ -397,6 +442,37 @@
     }
 
     setInterval(nextSlide, 5000);
+
+    const modal = document.getElementById('contactModal');
+    const modalClose = modal?.querySelector('[data-modal-close]');
+
+    const closeModal = () => {
+      modal?.classList.remove('modal-open');
+      modal?.setAttribute('aria-hidden', 'true');
+    };
+
+    const openModal = () => {
+      modal?.classList.add('modal-open');
+      modal?.setAttribute('aria-hidden', 'false');
+    };
+
+    document.querySelectorAll('[data-modal-trigger]').forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        openModal();
+      });
+    });
+
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    modalClose?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      closeModal();
+    });
   </script>
 </body>
 

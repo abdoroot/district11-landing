@@ -35,3 +35,136 @@ body {
     right: 150%;
   }
 }
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1.5rem;
+}
+
+.modal-overlay.modal-open {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  max-width: 560px;
+  width: 100%;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.modal-gallery img {
+  width: 100%;
+  display: block;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  height: 140px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: none;
+  background: #9f6f30;
+  color: #fff;
+  font-weight: 700;
+}
+
+.modal-form {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-form label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: #a0aec0;
+}
+
+.modal-form input {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(156, 163, 175, 0.35);
+  padding: 0.85rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #1f2937;
+  background: #fafafa;
+  outline: none;
+  transition: border 0.2s ease;
+  box-sizing: border-box;
+}
+
+.modal-form input:focus {
+  border-color: #9f6f30;
+}
+
+.modal-phone-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(156, 163, 175, 0.35);
+  border-radius: 0.9rem;
+  padding: 0.35rem 0.65rem;
+  background: #fafafa;
+}
+
+.modal-phone-prefix {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
+}
+
+.modal-phone-input input {
+  flex: 1;
+  border: none;
+  border-radius: 0.9rem;
+  padding-left: 0;
+  background: transparent;
+}
+
+.modal-submit {
+  margin-top: 0.25rem;
+  border-radius: 0.9rem;
+  padding: 0.95rem 1.5rem;
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #bf8c2f, #9f6f30);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 35px rgba(159, 111, 48, 0.5);
+}
