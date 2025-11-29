@@ -106,6 +106,23 @@
         padding-right: 4rem;
       }
     }
+
+    @media (min-width: 1024px) {
+      .hero-desktop-bg {
+        background-image: url('/hero2_hd.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: scale(1.02);
+        filter: none;
+      }
+
+      .unit-plan-img {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
   </style>
   <script type="application/ld+json">
     {
@@ -159,8 +176,13 @@
 
     <!-- ================== HERO ================== -->
     <section class="relative w-full h-[620px] md:h-[520px] overflow-hidden hero-desktop">
-      <img src="/hero2.webp" class="absolute inset-0 w-full h-full object-cover" alt="مشروع ديستريكت 11" width="774"
-        height="1310" loading="eager" decoding="async" importance="high" fetchpriority="high">
+
+      <!-- نسخة الموبايل -->
+      <img src="/hero2.webp" class="absolute inset-0 w-full h-full object-cover md:hidden" alt="مشروع ديستريكت 11"
+        width="774" height="1310" loading="eager" decoding="async" importance="high" fetchpriority="high">
+
+      <!-- نسخة الديسكتوب — خلفية عالية الدقة -->
+      <div class="hidden md:block hero-desktop-bg absolute inset-0"></div>
 
       <!-- Overlay محسّن بتدرج -->
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/55 to-black/20"></div>
@@ -206,10 +228,10 @@
               فندق أعمال بـ 368 غرفة داخل المشروع
             </span>
           </div>
+
         </div>
       </div>
     </section>
-
     <!-- شريط مزايا سريع تحت الهيرو -->
     <section class="w-full bg-white border-b border-gray-100">
       <div
